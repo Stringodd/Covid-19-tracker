@@ -3,9 +3,11 @@ import axios from 'axios'
 
 function App() {
 
+  // Updatable values
   const [veri, setVeri] = useState();
   const [tarih, setTarih] = useState();
 
+  // Where the data was taken 
   useEffect(() => {
     axios.get("https://raw.githubusercontent.com/ozanerturk/covid19-turkey-api/master/dataset/timeline.json")
       .then(json => setVeri(json.data[tarih]))
@@ -13,6 +15,7 @@ function App() {
 
   }, [veri, tarih])
 
+  // Creating the table and using the extracted data
   return (
     <React.Fragment className='container'>
       <React.Fragment className='row'>
